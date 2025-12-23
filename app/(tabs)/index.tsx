@@ -1,23 +1,21 @@
+import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { PRODUCTS } from '../../data/products';
+import { Product } from '../data/products';
 
-export default function IndexScreen() {
+type Props = {
+  product: Product;
+};
+
+export default function ProductItem({ product }: Props) {
   return (
-    <View style={styles.container}>
-      {PRODUCTS.map(product => (
-        <View key={product.id} style={styles.item}>
-          <Text style={styles.title}>{product.title}</Text>
-          <Text style={styles.price}>${product.price}</Text>
-        </View>
-      ))}
+    <View style={styles.item}>
+      <Text style={styles.title}>{product.title}</Text>
+      <Text style={styles.price}>${product.price}</Text>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    padding: 16,
-  },
   item: {
     paddingVertical: 12,
     borderBottomWidth: 1,
